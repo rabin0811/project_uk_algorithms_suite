@@ -1,0 +1,21 @@
+{
+    "app_name": "Algorithms & Data Structures Management Suite",
+    "version": "1.0.0",
+    "theme": "dark",
+    "appearance_mode": "dark",
+    "color_theme": "blue",
+    "database_path": "data/management_suite.db",
+    "window_width": 1280,
+    "window_height": 800,
+    "min_window_width": 1024,
+    "min_window_height": 600,
+    "sidebar_width": 220,
+    "animation_enabled": true,
+    "log_level": "INFO",
+    "log_file": "logs/app.log",
+    "items_per_page": 50,
+    "low_stock_threshold_percentage": 20,
+    "round_robin_time_quantum": 4,
+    "sample_data_on_first_run": true,
+    "reports_dir": "reports"
+}

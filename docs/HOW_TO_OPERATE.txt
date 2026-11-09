@@ -1,0 +1,454 @@
+================================================================================
+  HOW TO OPERATE: ALGORITHMS & DATA STRUCTURES MANAGEMENT SUITE
+================================================================================
+
+   A Professional Desktop Application Built with Python, CustomTkinter & SQLite
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+1.  INTRODUCTION
+2.  SYSTEM REQUIREMENTS
+3.  INSTALLATION
+4.  LAUNCHING THE APPLICATION
+5.  MAIN INTERFACE OVERVIEW
+6.  MODULE 1: INVENTORY MANAGEMENT SYSTEM
+7.  MODULE 2: SHARED RESOURCE SCHEDULING SYSTEM
+8.  MODULE 3: DYNAMIC RESOURCE ALLOCATION SYSTEM
+9.  KEYBOARD SHORTCUTS
+10. STATUS BAR
+11. TIPS & TROUBLESHOOTING
+
+
+================================================================================
+1. INTRODUCTION
+================================================================================
+
+The Algorithms & Data Structures Management Suite is a university assignment
+project that demonstrates the practical application of algorithms and data
+structures through three integrated modules:
+
+  - Inventory Management (searching, sorting)
+  - Resource Scheduling (interval detection, conflict resolution)
+  - Resource Allocation (CPU scheduling algorithms)
+
+The application uses a modern dark-theme interface built with CustomTkinter
+and stores data persistently using SQLite. All algorithms are implemented
+manually in pure Python with clear separation for academic analysis.
+
+
+================================================================================
+2. SYSTEM REQUIREMENTS
+================================================================================
+
+  - Operating System: Windows 10/11, macOS 12+, or Linux (with X11/Wayland)
+  - Python: Version 3.12 or higher
+  - RAM: 512 MB minimum (1 GB recommended)
+  - Disk: 50 MB free space
+  - Display: 1280 x 720 minimum resolution
+
+
+================================================================================
+3. INSTALLATION
+================================================================================
+
+Step 1: Open a terminal in the project directory.
+
+Step 2: Install the required Python packages:
+
+  pip install -r requirements.txt
+
+  The requirements.txt file includes:
+    - customtkinter (>=5.2.0)  - Modern UI framework
+    - Pillow (>=10.0.0)         - Image processing for icons
+
+Step 3: (Optional) Install pytest for running tests:
+
+  pip install pytest
+
+
+================================================================================
+4. LAUNCHING THE APPLICATION
+================================================================================
+
+From the project root directory, run:
+
+  python main.py
+
+On first launch, the application will:
+  1. Create the SQLite database in the data/ folder
+  2. Initialize all required database tables
+  3. Load sample data (10 inventory items, 5 bookings, 5 processes)
+
+The main window (1280 x 800) will appear centered on your screen.
+
+
+================================================================================
+5. MAIN INTERFACE OVERVIEW
+================================================================================
+
++------------------------------------------------------------------+
+|  SIDEBAR        |  MAIN CONTENT AREA                             |
+|                 |                                                  |
+|  [logo]         |   Dashboard / Inventory / Scheduling /          |
+|                 |   Resource Allocation views                     |
+|  [Dashboard]    |                                                  |
+|  [Inventory]    |   Each view occupies the full main area          |
+|  [Scheduling]   |   when selected.                                 |
+|  [Resource]     |                                                  |
+|                 |                                                  |
+|  v1.0.0         |                                                  |
+|  Ctrl+F1 Help   |                                                  |
+|  Ctrl+Q Quit    |                                                  |
++------------------+-----------------------------------------------+
+|  STATUS BAR: Ready | View name | Shortcut hints                  |
++------------------------------------------------------------------+
+
+--- SIDEBAR (Left Panel) ---
+  - Navigation buttons switch between the four main views.
+  - The active view button is highlighted.
+  - Version number and shortcut hints are at the bottom.
+
+--- STATUS BAR (Bottom) ---
+  - Shows current status ("Ready | View Name").
+  - Displays keyboard shortcut hints on the right.
+  - A progress bar appears during data-intensive operations.
+
+--- MAIN CONTENT AREA ---
+  - Each module has its own scrollable view with cards, tables,
+    buttons, and input fields.
+  - All views follow the same consistent design language.
+
+
+================================================================================
+6. MODULE 1: INVENTORY MANAGEMENT SYSTEM
+================================================================================
+
+6.1 Purpose
+  Manage inventory items with full CRUD, search, sorting, low-stock
+  alerts, and reporting functionality.
+
+6.2 Screen Layout
+  +------------------------------------------------------------------+
+  |  [Search...] [Sort v] []  [+ Add] [Import Sample] [Report]     |
+  +------------------------------------------------------------------+
+  |  INVENTORY ITEMS TABLE                                          |
+  |  ID | Name | Category | Qty | Price | Min | Status | Value    |
+  |  ...                                                           |
+  |  [Edit] [Delete]                                                |
+  +------------------------------------------------------------------+
+  |  LOW STOCK ALERTS                                                |
+  +------------------------------------------------------------------+
+  |  STATISTICS                                                      |
+  +------------------------------------------------------------------+
+  |  ALGORITHM COMPLEXITY CARD                                       |
+  +------------------------------------------------------------------+
+
+6.3 How To...
+
+  --- Add an Item ---
+  1. Click the "+ Add Item" button (green).
+  2. Fill in the form: Name, Category (dropdown), Quantity,
+     Price, Min Stock Level, Description.
+  3. Click "Save".
+  4. A success notification appears; the table refreshes.
+
+  --- Edit an Item ---
+  1. Click a row in the table to select it.
+  2. Click "Edit Selected" (enabled only when a row is selected).
+  3. Modify the fields in the dialog.
+  4. Click "Save".
+
+  --- Delete an Item ---
+  1. Select a row in the table.
+  2. Click "Delete Selected" (red button).
+  3. Confirm deletion in the confirmation dialog.
+  4. The item is removed permanently.
+
+  --- Search Items ---
+  1. Type in the search bar. The table filters in real-time.
+  2. Search uses Linear Search with substring matching on name
+     and description (O(n) time complexity).
+  3. Clear the search bar to show all items.
+
+  --- Sort Items ---
+  1. Select a sort key from the dropdown (Name, Quantity, Price,
+     or Category).
+  2. Click the up/down arrow button to toggle ascending/descending.
+  3. Merge Sort (O(n log n)) is used for Name and Price.
+  4. Quick Sort (O(n log n)) is used for Quantity.
+
+  --- Low Stock Alert ---
+  - Automatically shows items where quantity <= min_stock_level.
+  - Orange warning text lists all low-stock items.
+  - Green text appears when all items are sufficiently stocked.
+
+  --- Generate Report ---
+  1. Click the "Report" button.
+  2. A dialog shows: total items, total value, category breakdown,
+     and generation timestamp.
+
+  --- Import Sample Data ---
+  1. Click the "Import Sample" button.
+  2. 10 sample items are loaded from the built-in generator.
+  3. A success notification shows the count imported.
+
+6.4 Algorithms Demonstrated
+  - Linear Search: Substring matching on name and description (O(n))
+  - Binary Search: Exact name lookup on sorted data (O(log n))
+  - Merge Sort: Stable sort by name or price (O(n log n))
+  - Quick Sort: In-place sort by quantity (O(n log n) avg)
+
+6.5 Data Structures Demonstrated
+  - List: Stores all inventory items
+  - Dictionary: Hash-based lookups by ID, name, and category
+
+
+================================================================================
+7. MODULE 2: SHARED RESOURCE SCHEDULING SYSTEM
+================================================================================
+
+7.1 Purpose
+  Book meeting rooms and shared equipment with automatic conflict
+  detection, daily schedule viewing, and available slot finding.
+
+7.2 Screen Layout
+  +------------------------------------------------------------------+
+  |  [Search...] [Binary Search] [Booking History]                    |
+  |                                     [+ New Booking] [Check Flaws]|
+  +------------------------------------------------------------------+
+  |  ALL BOOKINGS TABLE                                              |
+  |  ID | Resource | Booker | Start | End | Dur | Purpose           |
+  |  ...                                                           |
+  |  [Edit] [Cancel]                                                 |
+  +------------------------------------------------------------------+
+  |  CONFLICT DETECTION STATUS                                        |
+  +------------------------------------------------------------------+
+  |  DAILY SCHEDULE VIEW                                             |
+  |  [Date: YYYY-MM-DD] [View Schedule] [Available Slots]           |
+  |  Schedule text area                                              |
+  +------------------------------------------------------------------+
+  |  ALGORITHM COMPLEXITY CARD                                       |
+  +------------------------------------------------------------------+
+
+7.3 How To...
+
+  --- Create a Booking ---
+  1. Click "+ New Booking" (green button).
+  2. Enter: Resource Name, Booker Name, Start/End Times (format:
+     YYYY-MM-DD HH:MM), and Purpose.
+  3. Click "Save".
+  4. If no conflict: booking is saved, success notification.
+  5. If conflict detected: dialog shows conflicting bookings,
+     booking is NOT saved.
+
+  --- Edit a Booking ---
+  1. Select a row in the table.
+  2. Click "Edit Booking".
+  3. Modify fields. The system re-checks for conflicts.
+  4. Save or Cancel.
+
+  --- Cancel a Booking ---
+  1. Select a row.
+  2. Click "Cancel Booking" (red button).
+  3. Confirm deletion.
+
+  --- Search Bookings ---
+  - Type in the search bar. Filters by resource name, booker name,
+    or purpose using linear search (O(n)).
+
+  --- Binary Search ---
+  1. Type a resource name in the search bar.
+  2. Click "Binary Search" button.
+  3. Performs binary search on sorted bookings by resource name
+     (O(log n) time complexity).
+  4. Shows the found booking or a "not found" message.
+
+  --- Booking History ---
+  1. Click "Booking History" button.
+  2. Shows all past bookings (end time before now), sorted newest first.
+
+  --- Check Conflicts ---
+  1. Click "Check Conflicts" button.
+  2. Runs interval overlap detection across all bookings.
+  3. If conflicts exist: shows details of each conflict pair.
+  4. If no conflicts: green success message.
+
+  --- View Daily Schedule ---
+  1. Enter a date in YYYY-MM-DD format.
+  2. Click "View Schedule".
+  3. Shows all bookings for that date, sorted by start time.
+
+  --- Find Available Slots ---
+  1. Enter a date.
+  2. Click "Available Slots".
+  3. Enter a resource name in the dialog.
+  4. Shows all free 30-minute slots between 08:00 and 18:00.
+
+7.4 Algorithms Demonstrated
+  - Interval Overlap Detection: Sweep line algorithm (O(n log n))
+  - Binary Search: On sorted bookings (O(log n))
+  - Sorting: Merge Sort for scheduling (O(n log n))
+
+7.5 Data Structures Demonstrated
+  - List: Stores all bookings
+  - Interval: Time ranges with overlap checking
+
+
+================================================================================
+8. MODULE 3: DYNAMIC RESOURCE ALLOCATION SYSTEM
+================================================================================
+
+8.1 Purpose
+  Simulate CPU scheduling algorithms (FCFS, SJF, Round Robin,
+  Priority) with a visual process queue and result analysis.
+
+8.2 Screen Layout
+  +------------------------------------------------------------------+
+  |  [+ Add Process] [Remove Selected] [Clear Completed]             |
+  |                                         [Process History]        |
+  +------------------------------------------------------------------+
+  |  PROCESS QUEUE TABLE                                             |
+  |  ID | Name | Burst | Priority | Arrival | Status | Remaining    |
+  |  ...                                                           |
+  |  Time Quantum: [4]                                               |
+  +------------------------------------------------------------------+
+  |  QUEUE VISUALIZATION (with progress bar)                         |
+  +------------------------------------------------------------------+
+  |  SCHEDULING ALGORITHMS                                           |
+  |  [FCFS]  [SJF]  [Round Robin]  [Priority]                       |
+  +------------------------------------------------------------------+
+  |  ALGORITHM RESULTS                                               |
+  |  (detailed Gantt-like output with metrics)                       |
+  +------------------------------------------------------------------+
+  |  ALGORITHM COMPLEXITY CARD                                       |
+  +------------------------------------------------------------------+
+
+8.3 How To...
+
+  --- Add a Process ---
+  1. Click "+ Add Process" (green button).
+  2. Enter: Process Name, Burst Time (CPU cycles), Priority
+     (1 = highest), Arrival Time.
+  3. Click "Add Process".
+  4. The process appears in the table with status "pending".
+
+  --- Remove a Process ---
+  1. Select a row in the table.
+  2. Click "Remove Selected" (red button).
+  3. Confirm deletion.
+
+  --- Clear Completed ---
+  1. Run a scheduling algorithm to complete processes.
+  2. Click "Clear Completed" to remove all completed processes
+     from the queue.
+
+  --- Process History ---
+  1. Run one or more scheduling algorithms.
+  2. Click "Process History" to see completed processes with
+     waiting time and turnaround time.
+
+  --- Run FCFS (First Come First Served) ---
+  1. Click the "FCFS" button.
+  2. Processes are scheduled in order of arrival time.
+  3. Results show: start time, end time, waiting time, turnaround
+     time for each process, plus averages.
+
+  --- Run SJF (Shortest Job First) ---
+  1. Click the "SJF" button.
+  2. Processes with shorter burst times are scheduled first
+     (among available processes).
+  3. Results display with full metrics.
+
+  --- Run Round Robin ---
+  1. Set the "Time Quantum" value (default: 4).
+  2. Click "Round Robin".
+  3. Each process runs for the time quantum in cyclic order.
+  4. Preemptive: processes go back to the queue if unfinished.
+
+  --- Run Priority Scheduling ---
+  1. Click "Priority" button.
+  2. Uses MinHeap-based Priority Queue.
+  3. Lower priority number = higher priority.
+  4. Results show execution order by priority.
+
+  --- Queue Visualization ---
+  - The waiting queue bar shows pending processes in order.
+  - The progress bar fills based on queue utilization.
+
+8.4 Algorithms Demonstrated
+  - FCFS: Non-preemptive, arrival-time order (O(n log n))
+  - SJF: Non-preemptive, shortest burst first (O(n^2))
+  - Round Robin: Preemptive, time quantum (O(n) per cycle)
+  - Priority: MinHeap-based priority queue (O(n log n))
+
+8.5 Data Structures Demonstrated
+  - Queue: FIFO list for process queuing
+  - MinHeap: Binary heap for priority queue (O(log n) operations)
+  - PriorityQueue: Wrapper around MinHeap for (priority, item) pairs
+
+
+================================================================================
+9. KEYBOARD SHORTCUTS
+================================================================================
+
+  Ctrl+N     Create a new item / booking / process
+  Ctrl+E     Edit the selected item
+  Ctrl+D     Delete the selected item
+  Ctrl+F     Focus the search bar
+  Ctrl+R     Run the default algorithm (current view)
+  F5         Refresh the current view
+  F1         Show help dialog
+  Ctrl+F1    Show full keyboard shortcuts list
+  Ctrl+Q     Quit the application
+  Alt+1      Switch to Dashboard
+  Alt+2      Switch to Inventory
+  Alt+3      Switch to Scheduling
+  Alt+4      Switch to Resource Allocation
+
+
+================================================================================
+10. STATUS BAR
+================================================================================
+
+  The status bar at the bottom of the window shows:
+    - Left: Current status message and active view name
+    - Right: Keyboard shortcut hints
+
+  The progress bar appears above the status bar during operations
+  such as loading data or running algorithms (briefly visible).
+
+
+================================================================================
+11. TIPS & TROUBLESHOOTING
+================================================================================
+
+  --- Application won't start ---
+    - Ensure Python 3.12+ is installed: python --version
+    - Install dependencies: pip install -r requirements.txt
+    - Check the logs/ folder for error details.
+
+  --- Database errors ---
+    - Delete the data/ folder to reset the database.
+    - The application will recreate it on next launch.
+    - Sample data will be reloaded automatically.
+
+  --- UI appears too small or too large ---
+    - Edit config.json and change window_width/window_height.
+    - Minimum supported resolution: 1024 x 600.
+
+  --- Buttons are disabled ---
+    - Edit/Delete buttons require a selected row in the table.
+    - Algorithm buttons require at least one process in the queue.
+
+  --- Sample data not loading ---
+    - Set "sample_data_on_first_run": true in config.json.
+    - Or click "Import Sample" in any module.
+
+  --- Running tests ---
+    - pip install pytest
+    - python -m pytest tests/ -v
+
+================================================================================
+  End of User Manual
+================================================================================
