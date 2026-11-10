@@ -1,17 +1,18 @@
-﻿# project_uk_algorithms_suite
+﻿# project_dsa_management_suite
 
-## UK Algorithms & Data Structures Suite
+## Data Structures & Algorithms Management Suite
 
 A Python/Tkinter desktop application demonstrating search, sorting, scheduling, interval overlap, and core data structures through inventory, scheduling, and resource-management modules.
 
 - Original location: `D:\Computers Files\work\uk work\algorithms___data_structure`
-- Working copy: `D:\PROJECTS_READY\project_uk_algorithms_suite`
+- Working copy: `D:\PROJECTS_READY\project_dsa_management_suite`
+- GitHub: <https://github.com/rabin0811/project_dsa_management_suite>
 - Stack: Python 3, customtkinter, Pillow, SQLite
 
 ## Folder layout
 
 ```text
-project_uk_algorithms_suite/
+project_dsa_management_suite/
   app/
     algorithms/     Search, sorting, scheduling, interval logic
     controllers/    MVC controllers
@@ -48,6 +49,7 @@ Configuration is read from `app/config.json` and can be overridden with `app/.en
 - Uses SQLite under `app/data/` for local state.
 - Runtime logs and the database are ignored by Git.
 - The suite is a coursework demonstration, not a production scheduling system.
+- Renamed from `project_uk_algorithms_suite` to `project_dsa_management_suite` on 2026-11-10.
 
 ## Troubleshooting
 

@@ -1,8 +1,10 @@
-﻿# UK Algorithms Suite — Technical Notes
+﻿# Data Structures & Algorithms Management Suite — Technical Notes
 
 ## Overview
 
 A Python desktop application that demonstrates search, sorting, scheduling, interval-overlap, and core data-structure concepts through inventory, scheduling, and resource-management screens.
+
+Renamed from `project_uk_algorithms_suite` to `project_dsa_management_suite` on 2026-11-10. GitHub: <https://github.com/rabin0811/project_dsa_management_suite>.
 
 ## Architecture
 
